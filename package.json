@@ -1,0 +1,46 @@
+{
+  "name": "stock-highcharts",
+  "version": "1.0.0",
+  "description": "stock-highcharts React component",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component",
+    "clean": "nwb clean-module && nwb clean-demo",
+    "prepublishOnly": "npm run build",
+    "start": "nwb serve-react-demo",
+    "test": "nwb test-react",
+    "test:coverage": "nwb test-react --coverage",
+    "test:watch": "nwb test-react --server"
+  },
+  "dependencies": {
+    "bootstrap": "^5.0.2",
+    "highcharts": "^9.1.2",
+    "highcharts-react-official": "^3.0.0",
+    "moment": "^2.29.1",
+    "rc-picker": "^2.5.13",
+    "react": "^17.0.2",
+    "react-datetime-picker": "^3.3.0",
+    "react-dom": "^17.0.2"
+  },
+  "peerDependencies": {
+    "react": "16.x"
+  },
+  "devDependencies": {
+    "nwb": "0.25.x",
+    "react-bootstrap": "^2.0.0-beta.2"
+  },
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "repository": "",
+  "keywords": [
+    "react-component"
+  ]
+}
