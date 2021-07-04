@@ -10,10 +10,24 @@ class StockChart extends React.Component {
         text: this.props.title,
       },
       series: [{
-        data: this.props.prices || []
+        type: 'area',
+        data: this.props.prices || [],
+        fillColor: {
+          linearGradient: {
+            x1: 0,
+            y1: 0,
+            x2: 0,
+            y2: 1
+          },
+          stops: [
+            [0, Highcharts.getOptions().colors[0]],
+            [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+          ]
+        },
+        threshold: null
       }, {
         type: 'flags',
-        data: this.props.buys || []
+        data: this.buyFlags || []
       }, {
         type: 'flags',
         data: this.sellFlags || []
@@ -21,13 +35,26 @@ class StockChart extends React.Component {
     }
   }
 
+  get buyFlags() {
+    const buys = this.props.buys;
+    return _.map(buys || [], (buy) => {
+      return {
+        x: buy[0],
+        y: buy[1],
+        title: `BUY: ${buy[1]}`,
+        text: `BUY: ${buy[1]}`
+      }
+    })
+  }
+
   get sellFlags() {
     const sells = this.props.sells;
     return _.map(sells || [], (sell) => {
       return {
         x: sell[0],
-        title: `BUY: ${sell[1]}`,
-        text: `BUY: ${sell[1]}`
+        y: sell[1],
+        title: `SELL: ${sell[1]}`,
+        text: `SELL: ${sell[1]}`
       }
     })
   }

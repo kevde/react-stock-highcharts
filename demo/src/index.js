@@ -43,7 +43,7 @@ export default class Demo extends Component {
 
   handleAddSellPoint = (sellPoint) => {
     const newSells = [...this.state.sells, sellPoint];
-    this.setState({ buys: newSells })
+    this.setState({ sells: newSells })
   }
 
   render() {
@@ -63,12 +63,12 @@ export default class Demo extends Component {
       <Row>
         <Col>
           <BuyForm
-            latestPrice={this.props.latestPrice}
+            latestPrice={this.state.latestPrice}
             onSubmit={this.handleAddBuyPoint}
           />
           <SellForm
-            latestPrice={this.props.latestPrice}
-            onSubmit={this.handleAddBuyPoint}
+            latestPrice={this.state.latestPrice}
+            onSubmit={this.handleAddSellPoint}
           />
         </Col>
       </Row>

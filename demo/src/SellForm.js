@@ -8,7 +8,7 @@ class SellForm extends Component {
     onSubmit && onSubmit(this.props.latestPrice);
   }
 
-  render() {
+  renderForm() {
     const { latestPrice } = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
