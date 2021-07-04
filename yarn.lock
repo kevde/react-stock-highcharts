@@ -1153,6 +1153,16 @@
   dependencies:
     dequal "^2.0.2"
 
+"@tipcity/localsocket@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@tipcity/localsocket/-/localsocket-1.2.2.tgz#be0b77cfbfca0511a199a4763c6103d79cb3de1d"
+  integrity sha512-sLQ4rlgzbeE3dowx/O5rhZUoO2dPTl0Sj/5b3BtN9mfUJpDR5Xf9Rs2oztGbe0t6eQEuKgWkuM5me9pqAsVixw==
+
+"@types/component-emitter@^1.2.10":
+  version "1.2.10"
+  resolved "https://registry.yarnpkg.com/@types/component-emitter/-/component-emitter-1.2.10.tgz#ef5b1589b9f16544642e473db5ea5639107ef3ea"
+  integrity sha512-bsjleuRKWmGqajMerkzox19aGbscQX5rmmvvXl3wlIp5gMG1HgkiwPxsN5p070fBDKTNSPgojVbuY1+HWMbFhg==
+
 "@types/glob@^7.1.1":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.3.tgz#e6ba80f36b7daad2c685acd9266382e68985c183"
@@ -1877,7 +1887,7 @@ babylon@^6.18.0:
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
   integrity sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==
 
-backo2@1.0.2:
+backo2@1.0.2, backo2@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
   integrity sha1-MasayLEpNjRj41s+u2n038+6eUc=
@@ -3056,14 +3066,14 @@ debug@4.1.1, debug@~4.1.0:
   dependencies:
     ms "^2.1.1"
 
-debug@^3.1.1, debug@^3.2.5:
+debug@^3.1.1, debug@^3.2.5, debug@^3.2.6:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.7.tgz#72580b7e9145fb39b6676f9c5e5fb100b934179a"
   integrity sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==
   dependencies:
     ms "^2.1.1"
 
-debug@^4.1.0, debug@^4.1.1:
+debug@^4.1.0, debug@^4.1.1, debug@~4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
@@ -3439,6 +3449,21 @@ engine.io-client@~3.5.0:
     xmlhttprequest-ssl "~1.6.2"
     yeast "0.1.2"
 
+engine.io-client@~5.1.1:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/engine.io-client/-/engine.io-client-5.1.2.tgz#27108da9b39ae03262443d945caf2caa3655c4cb"
+  integrity sha512-blRrgXIE0A/eurWXRzvfCLG7uUFJqfTGFsyJzXSK71srMMGJ2VraBLg8Mdw28uUxSpVicepBN9X7asqpD1mZcQ==
+  dependencies:
+    base64-arraybuffer "0.1.4"
+    component-emitter "~1.3.0"
+    debug "~4.3.1"
+    engine.io-parser "~4.0.1"
+    has-cors "1.1.0"
+    parseqs "0.0.6"
+    parseuri "0.0.6"
+    ws "~7.4.2"
+    yeast "0.1.2"
+
 engine.io-parser@~2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-2.2.1.tgz#57ce5611d9370ee94f99641b589f94c97e4f5da7"
@@ -3449,6 +3474,13 @@ engine.io-parser@~2.2.0:
     base64-arraybuffer "0.1.4"
     blob "0.0.5"
     has-binary2 "~1.0.2"
+
+engine.io-parser@~4.0.1:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-4.0.2.tgz#e41d0b3fb66f7bf4a3671d2038a154024edb501e"
+  integrity sha512-sHfEQv6nmtJrq6TKuIz5kyEKH/qSdK56H/A+7DnAuUPWosnIZAS2NHNcPLmyjtY3cGS/MqJdZbUjW97JU72iYg==
+  dependencies:
+    base64-arraybuffer "0.1.4"
 
 engine.io@~3.5.0:
   version "3.5.0"
@@ -3811,7 +3843,7 @@ faye-websocket@^0.10.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
-faye-websocket@~0.11.1:
+faye-websocket@^0.11.3, faye-websocket@~0.11.1:
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/faye-websocket/-/faye-websocket-0.11.4.tgz#7f0d9275cfdd86a1c963dc8b65fcc451edcbb1da"
   integrity sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==
@@ -5215,7 +5247,7 @@ json-stringify-safe@~5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
 
-json3@^3.3.2:
+json3@^3.3.2, json3@^3.3.3:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/json3/-/json3-3.3.3.tgz#7fc10e375fc5ae42c4705a5cc0aa6f62be305b81"
   integrity sha512-c7/8mbUsKigAbLkD5B010BK4D9LZm7A1pNItkEwiUZRpIN66exu/e7YQWysGun+TRKaJp8MhemM+VkfWv42aCA==
@@ -7996,6 +8028,19 @@ socket.io-client@2.4.0:
     socket.io-parser "~3.3.0"
     to-array "0.1.4"
 
+socket.io-client@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-4.1.2.tgz#95ad7113318ea01fba0860237b96d71e1b1fd2eb"
+  integrity sha512-RDpWJP4DQT1XeexmeDyDkm0vrFc0+bUsHDKiVGaNISJvJonhQQOMqV9Vwfg0ZpPJ27LCdan7iqTI92FRSOkFWQ==
+  dependencies:
+    "@types/component-emitter" "^1.2.10"
+    backo2 "~1.0.2"
+    component-emitter "~1.3.0"
+    debug "~4.3.1"
+    engine.io-client "~5.1.1"
+    parseuri "0.0.6"
+    socket.io-parser "~4.0.4"
+
 socket.io-parser@~3.3.0:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-3.3.2.tgz#ef872009d0adcf704f2fbe830191a14752ad50b6"
@@ -8013,6 +8058,15 @@ socket.io-parser@~3.4.0:
     component-emitter "1.2.1"
     debug "~4.1.0"
     isarray "2.0.1"
+
+socket.io-parser@~4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-4.0.4.tgz#9ea21b0d61508d18196ef04a2c6b9ab630f4c2b0"
+  integrity sha512-t+b0SS+IxG7Rxzda2EVvyBZbvFPBCjJoyHuE0P//7OAsN23GItzDRdWa6ALxZI/8R5ygK7jAR6t028/z+7295g==
+  dependencies:
+    "@types/component-emitter" "^1.2.10"
+    component-emitter "~1.3.0"
+    debug "~4.3.1"
 
 socket.io@^2.3.0:
   version "2.4.1"
@@ -8037,6 +8091,18 @@ sockjs-client@1.4.0:
     inherits "^2.0.3"
     json3 "^3.3.2"
     url-parse "^1.4.3"
+
+sockjs-client@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/sockjs-client/-/sockjs-client-1.5.1.tgz#256908f6d5adfb94dabbdbd02c66362cca0f9ea6"
+  integrity sha512-VnVAb663fosipI/m6pqRXakEOw7nvd7TUgdr3PlR/8V2I95QIdwT8L4nMxhyU8SmDBHYXU1TOElaKOmKLfYzeQ==
+  dependencies:
+    debug "^3.2.6"
+    eventsource "^1.0.7"
+    faye-websocket "^0.11.3"
+    inherits "^2.0.4"
+    json3 "^3.3.3"
+    url-parse "^1.5.1"
 
 sockjs@0.3.20:
   version "0.3.20"
@@ -8776,7 +8842,7 @@ url-loader@4.1.0:
     mime-types "^2.1.26"
     schema-utils "^2.6.5"
 
-url-parse@^1.4.3:
+url-parse@^1.4.3, url-parse@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
   integrity sha512-HOfCOUJt7iSYzEx/UqgtwKRMC6EU91NFhsCHMv9oM03VJcVo2Qrp8T8kI9D7amFf1cu+/3CEhgb3rF9zL7k85Q==

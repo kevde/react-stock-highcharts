@@ -11,8 +11,25 @@ class StockChart extends React.Component {
       },
       series: [{
         data: this.props.prices || []
+      }, {
+        type: 'flags',
+        data: this.props.buys || []
+      }, {
+        type: 'flags',
+        data: this.sellFlags || []
       }]
     }
+  }
+
+  get sellFlags() {
+    const sells = this.props.sells;
+    return _.map(sells || [], (sell) => {
+      return {
+        x: sell[0],
+        title: `BUY: ${sell[1]}`,
+        text: `BUY: ${sell[1]}`
+      }
+    })
   }
 
   render() {
