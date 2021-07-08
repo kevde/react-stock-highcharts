@@ -20,6 +20,7 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.1",
     "@tipcity/localsocket": "^1.2.2",
     "bootstrap": "^5.0.2",
     "highcharts": "^9.1.2",

@@ -4,13 +4,13 @@ import { render } from 'react-dom'
 import 'rc-picker/assets/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import StockChart from '../../src'
-import PriceForm from './PriceForm';
-import StockChartContextProvider from '../../src/StockChartContext';
 import WebsocketWrapper from './WebsocketWrapper';
 import BuyForm from './BuyForm';
 import SellForm from './SellForm';
+import StockChartContextProvider, { StockChartContext } from '../../src/StockChartContext';
 
 export default class Demo extends Component {
+  static contextType = StockChartContext;
   state = {
     prices: [],
     sells: [],
@@ -27,8 +27,7 @@ export default class Demo extends Component {
 
   handleWebsocketAddPrice = (priceData) => {
     const currentPoint = [priceData.E, Number(priceData.p)];
-    const newPrices = [...this.state.prices, currentPoint];
-    this.setState({ prices: newPrices, latestPrice: currentPoint });
+    this.context.addPrice(currentPoint);
   }
 
   handleAddPrice = (pricePoint) => {
@@ -50,12 +49,13 @@ export default class Demo extends Component {
     return <div className="m-4">
       <Row>
         <h1>stock-highcharts Demo</h1>
-
       </Row>
       <Row>
         <StockChart
           title="Sample Stock Chart"
-          prices={this.state.prices}
+          ref={this.chart}
+          currencyPair="BTC/USDT"
+          navigatorEnabled={false}
           buys={this.state.buys}
           sells={this.state.sells}
         />
