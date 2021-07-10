@@ -23,6 +23,7 @@
     "@material-ui/core": "^4.12.1",
     "@tipcity/localsocket": "^1.2.2",
     "bootstrap": "^5.0.2",
+    "cron-parser": "^3.5.0",
     "highcharts": "^9.1.2",
     "highcharts-react-official": "^3.0.0",
     "moment": "^2.29.1",

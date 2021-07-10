@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-import { Col, Row } from 'react-bootstrap'
 import { render } from 'react-dom'
 import 'rc-picker/assets/index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import StockChart from '../../src'
 import WebsocketWrapper from './WebsocketWrapper';
-import BuyForm from './BuyForm';
-import SellForm from './SellForm';
 import StockChartContextProvider, { StockChartContext } from '../../src/StockChartContext';
+import { Grid } from '@material-ui/core';
+import DemoPropsForm from './DemoPropsForm';
 
 export default class Demo extends Component {
   static contextType = StockChartContext;
   state = {
-    prices: [],
-    sells: [],
-    buys: [],
+    profit: 70,
+    betInterval: 30,
+    closedBetGap: 5,
   }
 
   componentDidMount() {
@@ -30,49 +28,49 @@ export default class Demo extends Component {
     this.context.addPrice(currentPoint);
   }
 
-  handleAddPrice = (pricePoint) => {
-    const newPrices = [...this.state.prices, pricePoint];
-    this.setState({ prices: newPrices, latestPrice: pricePoint })
+  handleStateChange = (newState) => {
+    this.setState(newState);
   }
 
-  handleAddBuyPoint = (buyPoint) => {
-    const newBuys = [...this.state.buys, buyPoint];
-    this.setState({ buys: newBuys })
-  }
+  handleInitialValues = () => {
+    var data = [],
+      time = (new Date()).getTime(),
+      i;
 
-  handleAddSellPoint = (sellPoint) => {
-    const newSells = [...this.state.sells, sellPoint];
-    this.setState({ sells: newSells })
+    for (i = -999; i <= 0; i += 1) {
+      data.push([
+        time + i * 1000,
+        Math.round(Math.random() * 100)
+      ]);
+    }
+    return data;
   }
 
   render() {
-    return <div className="m-4">
-      <Row>
+    return <Grid container>
+      <Grid item md={12}>
         <h1>stock-highcharts Demo</h1>
-      </Row>
-      <Row>
+      </Grid>
+      <Grid item md={12}>
         <StockChart
           title="Sample Stock Chart"
           ref={this.chart}
           currencyPair="BTC/USDT"
-          navigatorEnabled={false}
-          buys={this.state.buys}
-          sells={this.state.sells}
+          profit={this.state.profit}
+          initialValues={this.handleInitialValues}
+          closedBetGap={this.state.closedBetGap}
+          betInterval={this.state.betInterval}
+          navigatorEnabled={this.state.navigatorEnabled}
         />
-      </Row>
-      <Row>
-        <Col>
-          <BuyForm
-            latestPrice={this.state.latestPrice}
-            onSubmit={this.handleAddBuyPoint}
-          />
-          <SellForm
-            latestPrice={this.state.latestPrice}
-            onSubmit={this.handleAddSellPoint}
-          />
-        </Col>
-      </Row>
-    </div>
+      </Grid>
+      <Grid item md={12}>
+        <DemoPropsForm
+          value={this.state}
+          // disabled={this.context.isBetOpen}
+          onChange={this.handleStateChange}
+        />
+      </Grid>
+    </Grid>
   }
 }
 
