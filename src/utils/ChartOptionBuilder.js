@@ -96,6 +96,7 @@ class ChartOptionBuilder {
 
   withData(initialValues, currencyPair) {
     this.chartOptions.series = [{
+      id: 'dataseries',
       name: currencyPair,
       type: 'area',
       data: initialValues,
@@ -114,7 +115,58 @@ class ChartOptionBuilder {
       threshold: null
     }, {
       type: 'flags',
-      centerInCategory: true,
+      onSeries: 'dataseries',
+      allowOverlapX: true,
+      id: 'winningCallFlags',
+      color: 'red', // same as onSeries
+      fillColor: 'gold',
+      shape: 'squarepin',
+      width: 16
+    }, {
+      type: 'flags',
+      onSeries: 'dataseries',
+      allowOverlapX: true,
+      id: 'losingCallFlags',
+      color: 'red', // same as onSeries
+      fillColor: 'red',
+      shape: 'squarepin',
+      width: 16
+    }, {
+      type: 'flags',
+      onSeries: 'dataseries',
+      allowOverlapX: true,
+      id: 'evenCallFlags',
+      color: 'red', // same as onSeries
+      fillColor: 'white',
+      shape: 'squarepin',
+      width: 16
+    }, {
+      type: 'flags',
+      onSeries: 'dataseries',
+      allowOverlapX: true,
+      id: 'winningPutFlags',
+      color: 'darkblue', // same as onSeries
+      fillColor: 'skyblue',
+      shape: 'squarepin',
+      width: 16
+    }, {
+      type: 'flags',
+      onSeries: 'dataseries',
+      allowOverlapX: true,
+      id: 'losingPutFlags',
+      color: 'darkblue', // same as onSeries
+      fillColor: 'red',
+      shape: 'squarepin',
+      width: 16
+    }, {
+      type: 'flags',
+      onSeries: 'dataseries',
+      allowOverlapX: true,
+      id: 'evenPutFlags',
+      color: 'darkblue', // same as onSeries
+      fillColor: 'white',
+      shape: 'squarepin',
+      width: 16
     }];
     return this;
   }

@@ -4,8 +4,9 @@ import 'rc-picker/assets/index.css';
 import StockChart from '../../src'
 import WebsocketWrapper from './WebsocketWrapper';
 import StockChartContextProvider, { StockChartContext } from '../../src/StockChartContext';
-import { Grid } from '@material-ui/core';
+import { Card, Grid } from '@material-ui/core';
 import DemoPropsForm from './DemoPropsForm';
+import ResultsTable from './ResultsTable';
 
 export default class Demo extends Component {
   static contextType = StockChartContext;
@@ -13,6 +14,7 @@ export default class Demo extends Component {
     profit: 70,
     betInterval: 30,
     closedBetGap: 5,
+    currencyPair: "BTC/USDT",
   }
 
   componentDidMount() {
@@ -32,6 +34,10 @@ export default class Demo extends Component {
     this.setState(newState);
   }
 
+  handleSummarizeResults = (bets, lastPricePoint) => {
+    this.setState({ bets, lastPricePoint })
+  }
+
   handleInitialValues = () => {
     var data = [],
       time = (new Date()).getTime(),
@@ -40,37 +46,62 @@ export default class Demo extends Component {
     for (i = -999; i <= 0; i += 1) {
       data.push([
         time + i * 1000,
-        Math.round(Math.random() * 100)
+        Math.round(Math.random() * 100) + 33800
       ]);
     }
     return data;
   }
 
+  renderDemoCard() {
+    return (
+      <Grid container>
+        <Grid item md={6}>
+          <DemoPropsForm
+            value={this.state}
+            // disabled={this.context.isBetOpen}
+            onChange={this.handleStateChange}
+          />
+        </Grid>
+        <Grid item md={6}>
+          {this.state.bets && <ResultsTable
+            bets={this.state.bets}
+            lastPricePoint={this.state.lastPricePoint}
+            currencyPair={this.state.currencyPair}
+          />}
+        </Grid>
+      </Grid>
+    )
+  }
+
   render() {
-    return <Grid container>
-      <Grid item md={12}>
-        <h1>stock-highcharts Demo</h1>
-      </Grid>
-      <Grid item md={12}>
-        <StockChart
-          title="Sample Stock Chart"
-          ref={this.chart}
-          currencyPair="BTC/USDT"
-          profit={this.state.profit}
-          initialValues={this.handleInitialValues}
-          closedBetGap={this.state.closedBetGap}
-          betInterval={this.state.betInterval}
-          navigatorEnabled={this.state.navigatorEnabled}
-        />
-      </Grid>
-      <Grid item md={12}>
-        <DemoPropsForm
-          value={this.state}
-          // disabled={this.context.isBetOpen}
-          onChange={this.handleStateChange}
-        />
-      </Grid>
-    </Grid>
+    return (
+      <div>
+        <Grid container style={{ backgroundColor: 'lightgray' }}>
+          <Grid item md={12}>
+            <h1>stock-highcharts Demo</h1>
+          </Grid>
+          <Grid item md={12}>
+            <Card style={{ margin: '20px', padding: '20px' }}>
+              <StockChart
+                title="Sample Stock Chart"
+                ref={this.chart}
+                currencyPair={this.state.currencyPair}
+                profit={this.state.profit}
+                initialValues={this.handleInitialValues}
+                closedBetGap={this.state.closedBetGap}
+                betInterval={this.state.betInterval}
+                navigatorEnabled={this.state.navigatorEnabled}
+                onBettingFinished={this.handleSummarizeResults}
+              />
+            </Card>
+          </Grid>
+          <Grid item md={12} style={{ padding: '30px' }}>
+            <i>Below are properties that needs to be configured for this react component</i>
+            {this.renderDemoCard()}
+          </Grid>
+        </Grid>
+      </div>
+    )
   }
 }
 

@@ -32,14 +32,14 @@ class CallPutForm extends React.Component {
         </Grid>
         <Grid item>
           <Button
-            onClick={this.context.handleAddCall}
+            onClick={this.context.handleAddCall(this.props.profit)}
             disabled={!this.context.isBetOpen}
             variant="contained"
             color="primary">Call</Button>
         </Grid>
         <Grid item>
           <Button
-            onClick={this.context.handleAddPut}
+            onClick={this.context.handleAddPut(this.props.profit)}
             disabled={!this.context.isBetOpen}
             variant="contained"
             color="secondary">Put</Button>

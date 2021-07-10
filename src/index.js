@@ -45,6 +45,10 @@ class StockChart extends React.Component {
       this.context.movePurchaseTimeBar(event.target, this.props)
       this.context.evaluateBetOpen(event.target)
     }, ONE_SECOND)
+
+    setInterval(() => {
+      this.context.reloadFlags(this.props.profit)
+    }, ONE_SECOND / 2)
   }
 
   componentDidMount() {
@@ -64,15 +68,6 @@ class StockChart extends React.Component {
       chartOptions: chartOptionBuilder.build(),
     })
   }
-
-  // static getDerivedStateFromProps(props, state) {
-  //   if (props.betInterval !== state.betInterval) {
-  //     return {
-  //       betInterval: props.betInterval,
-  //       chartOptions: StockChart.getChartOptions(props.betInterval, props.title)
-  //     }
-  //   }
-  // }
 
   render() {
     return (
